@@ -37,6 +37,6 @@ It's CARD WARS!
 ## Contributing
 Card Wars uses Unity 2017.4.40f1. No other dependencies are required.
 
-## AI disclosure
+## AI usage in this work
 
 GPT 6.1 sol used for this project
