@@ -1,0 +1,582 @@
+[
+  {
+    "file": "globalgamemanagers.assets",
+    "cameras": [
+      {
+        "id": 48808,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48809,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48810,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48811,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48812,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      },
+      {
+        "id": 48813,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48814,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48815,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48816,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48817,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48818,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48819,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      },
+      {
+        "id": 48820,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48821,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48822,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48823,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48824,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48825,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48826,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      },
+      {
+        "id": 48827,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48828,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 48829,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level0",
+    "cameras": [
+      {
+        "id": 59,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 60,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level1",
+    "cameras": [
+      {
+        "id": 3,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level10",
+    "cameras": [
+      {
+        "id": 2047,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 2048,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level2",
+    "cameras": [
+      {
+        "id": 6814,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 6815,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 6816,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level5",
+    "cameras": [
+      {
+        "id": 49,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 50,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level6",
+    "cameras": [
+      {
+        "id": 205,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 206,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level7",
+    "cameras": [
+      {
+        "id": 4414,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4415,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4416,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4417,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4418,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4419,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      },
+      {
+        "id": 4420,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4421,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4422,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4423,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4424,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4425,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4426,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 0,
+        "path": -1
+      },
+      {
+        "id": 4427,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 4428,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level8",
+    "cameras": [
+      {
+        "id": 3281,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 3282,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      },
+      {
+        "id": 3283,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  },
+  {
+    "file": "level9",
+    "cameras": [
+      {
+        "id": 11,
+        "msaa": false,
+        "target": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "enabled": 1,
+        "path": -1
+      }
+    ]
+  }
+]

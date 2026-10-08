@@ -1,0 +1,30 @@
+CARD WARS — INDICE DEL MATERIALE GRAFICO
+Installazione: ${CARDWARS_HOME}/game/CardWars_Data
+Texture2D: 2062
+Immagini decodificate: 2059
+Texture generate a runtime: 3 (font senza immagine salvata)
+Immagini distinte per pixel: 2013
+Copie identiche aggiuntive: 46
+Famiglie per nome: 1055
+Varianti low_: 740
+Errori di decodifica: 0
+
+CATEGORIE — TEXTURE / FAMIGLIE
+Carte · creature: 390 / 194
+Carte · edifici: 54 / 27
+Carte · magie: 134 / 67
+Schermate, loghi e promozioni: 16 / 12
+Mappe e percorsi: 127 / 65
+Interfaccia, cornici e icone: 64 / 33
+Personaggi, creature e oggetti 3D: 778 / 406
+Scenari e ambienti: 234 / 117
+Effetti e animazioni: 262 / 133
+Font e texture tecniche: 3 / 1
+
+Classificazione preliminare: controllare le miniature prima del batch.
+Per carte e varianti low_, usare prima la sorgente maggiore disponibile.
+Famiglie per nome e duplicati pixel-identici sono due conteggi differenti.
+Preservare alpha; controllare atlanti/sprite, UV, mipmap, scritte e fotogrammi.
+Il 2× quadruplica i pixel; memoria RGBA stimata senza mipmap/compressione.
+File del gioco invariati per dimensione e mtime. Nessun gioco o upscale avviato.
+I file di sistema interni di Unity non sono candidati al restauro.

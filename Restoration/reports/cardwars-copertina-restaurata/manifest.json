@@ -1,0 +1,20 @@
+{
+  "status": "installed",
+  "original_size": [
+    192,
+    192
+  ],
+  "restored_size": [
+    768,
+    768
+  ],
+  "scale": 4,
+  "model": "realesr-animevideov3-x4",
+  "processing": "local GPU Real-ESRGAN NCNN Vulkan",
+  "alpha": "original bilinear 4x",
+  "original_sha256": "b631573b2d1448e67410ec91f855e5de235247013bbfe960f9acbec69b036c30",
+  "output_sha256": "a858a38ccf3c1959b03eb43727be2de0d27200bbdaa6fb29beb9e19ad4cd240b",
+  "installed_app": "/Applications/GameToMac.app",
+  "app_backup": "${GAME_TO_MAC_WORKSPACE}/outputs/cardwars-copertina-restaurata/GameToMac-before-cover.app",
+  "codesign_verified": true
+}

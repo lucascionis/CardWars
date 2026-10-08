@@ -1,0 +1,10 @@
+{
+  "game": "${CARDWARS_HOME}/game",
+  "app": "/Applications/GameToMac.app",
+  "backup": "${CARDWARS_HOME}/backups/before-restoration-2x-20261007-195332",
+  "textures": 2059,
+  "sprites": 1087,
+  "atlases": 44,
+  "game_launched": false,
+  "status": "installed"
+}

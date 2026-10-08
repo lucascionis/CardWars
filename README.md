@@ -1,3 +1,9 @@
+# Card Wars — Restoration fork
+
+Local 2× texture restoration, atlas/sprite integration tools, sampling fixes and verified image deliveries. See [Restoration/README.md](Restoration/README.md) for status, downloads and remaining source-integration work. Native Apple Silicon support is planned; it is not included in this snapshot.
+
+---
+
 # Card Wars
 A port of the "Adventure Time: Card Wars" mobile game to PC.
 

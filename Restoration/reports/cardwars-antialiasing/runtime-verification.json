@@ -1,0 +1,16 @@
+{
+  "status": "startup_verified",
+  "game_reached_ready": true,
+  "normal_audio_runtime": true,
+  "game_closed": true,
+  "texture_loading_errors_detected": false,
+  "map_visual_comparison_verified": false,
+  "hardware_msaa_samples_verified": false,
+  "requested_msaa_samples": 4,
+  "game_window_logical_size": [
+    1920,
+    1080
+  ],
+  "macos_screenshot": "${GAME_TO_MAC_WORKSPACE}/outputs/cardwars-antialiasing/game-window-after-final.png",
+  "visual_limit": "Title screen inspected; automated UI cannot bind unbundled Wine game, so map A/B and animation checks remain unverified."
+}

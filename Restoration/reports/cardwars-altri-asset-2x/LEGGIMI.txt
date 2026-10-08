@@ -1,0 +1,12 @@
+CARD WARS — CODA RESTAURO 2×
+
+1.771 texture grafiche mancanti, incluse varianti ridotte e delle carte.
+766 famiglie principali ulteriori; le 288 carte già elaborate restano separate.
+Font dinamici esclusi: non contengono un'immagine salvata.
+Un solo processo GPU, tile 128, thread 2:1:2, priorità CPU ridotta.
+Riutilizzo esclusivamente per sorgenti con pixel, dimensioni e alpha identici.
+File omonimi distinti conservano ID e percorsi diversi.
+Trasparenza originale ripristinata per ogni PNG finale.
+Nessun file del gioco modificato, nessun gioco avviato.
+queue.json: piano, stato e hash; progress.json: avanzamento sintetico.
+Per riprendere: eseguire scripts/cardwars_upscale_queue.py --run con il venv locale.

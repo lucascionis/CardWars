@@ -1,0 +1,801 @@
+CARD WARS — CAMPIONAMENTO E ANTI-ALIASING
+
+Audit completato: gioco non modificato e non avviato.
+I candidati indicano rischio di aliasing: la presenza di un difetto visibile richiede confronto in gioco.
+
+{
+  "checked_textures": 2059,
+  "single_level_textures": 251,
+  "missing_mips_nonconstant": 250,
+  "constant_2x2": 1,
+  "point_filtered": 3,
+  "main_cards_already_mipped": 288,
+  "filter_counts": {
+    "Bilinear": 1943,
+    "Trilinear": 113,
+    "Point": 3
+  },
+  "review_groups": {
+    "existing_mips_visual_review": 1806,
+    "environment_mip_trial": 136,
+    "preserve_constant": 1,
+    "ui_mip_trial": 34,
+    "animation_mip_review": 79,
+    "point_filter_trial": 3
+  },
+  "missing_by_category": {
+    "scenery": 60,
+    "ui": 34,
+    "maps": 116,
+    "effects": 11,
+    "characters": 23,
+    "screens": 6
+  },
+  "missing_atlases": 133,
+  "additional_full_chain_mib_estimate": 1096.1
+}
+
+ORDINE DEGLI INTERVENTI
+phase_1: Ritratti, GUI/HUD, miniature carte, cornici e badge: mipmap protette per regione; filtro per i tre asset Point.
+phase_2: Elementi mappe/ambienti e texture autonome: mipmap, alpha corretto e controlli su UV/wrap.
+phase_3: Atlanti cinematiche ed effetti: politica identica tra fotogrammi e confronto in movimento.
+preservation: Base level 2×, alpha originale, ID, rettangoli, UV, geometria, script e salvataggi; conservare mipmap già presenti.
+resolution_policy: Mipmap per riduzione automatica; varianti low_ esistenti da conservare. Ridurre il livello base solo per asset dimostrati esclusivamente piccoli.
+acceptance: Confronti A/B alla dimensione effettiva in 1920×1080 e HiDPI, zoom/animazioni, nessun alone o colore di sprite adiacente, testo leggibile.
+
+CANDIDATI
+P1 | globalgamemanagers.assets:1837 | CakeFionna4 | 832×640 | Point | 1 livelli
+Provare Bilinear/Trilinear e confrontare piccoli dettagli; conservare mipmap già presenti. Preparare anche mipmap.
+
+P1 | globalgamemanagers.assets:2061 | Jake_Face | 2048×2048 | Point | 12 livelli
+Provare Bilinear/Trilinear e confrontare piccoli dettagli; conservare mipmap già presenti.
+
+P1 | globalgamemanagers.assets:2556 | low_Jake_Face | 1024×1024 | Point | 11 livelli
+Provare Bilinear/Trilinear e confrontare piccoli dettagli; conservare mipmap già presenti.
+
+P1 | globalgamemanagers.assets:2084 | BannersAtlas | 2048×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2645 | BattleRingAtlas | 4096×4096 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1942 | Battle_Banners_Atlas | 4096×4096 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2155 | CardArtAtlas | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2366 | CardArtAtlas02 | 2048×1024 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2660 | CardFrameAtlas | 2048×1024 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2497 | Card_Back | 512×512 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:2487 | Card_Front | 512×512 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:2358 | CharacterIconAtlas | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2341 | CharacterIconAtlas02 | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2384 | GUIAtlas | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2391 | GUIAtlas_2 | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2519 | GUIAtlas_3 | 4096×4096 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | sharedassets2.assets:56 | GameBoardGrid | 2048×2048 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:2011 | QuestInfo_Heart | 148×128 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:2065 | Rarity_Banners_Atlas | 2048×2048 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1611 | SideQuest_BearOnSkates_Atlas | 1024×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2010 | SideQuest_HUD_Atlas | 1024×1024 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2372 | low_BannersAtlas | 1024×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2438 | low_BattleRingAtlas | 2048×2048 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1704 | low_Battle_Banners_Atlas | 2048×2048 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2439 | low_CardArtAtlas | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2698 | low_CardArtAtlas02 | 1024×512 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1411 | low_Card_Back | 256×256 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:1927 | low_Card_Front | 256×256 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:1869 | low_CharacterIconAtlas | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1807 | low_CharacterIconAtlas02 | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1530 | low_GUIAtlas | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1481 | low_GUIAtlas_2 | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2225 | low_GUIAtlas_3 | 2048×2048 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2522 | low_QuestInfo_Heart | 128×110 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale.
+
+P1 | globalgamemanagers.assets:1506 | low_Rarity_Banners_Atlas | 1024×1024 | Bilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:2175 | low_SideQuest_BearOnSkates_Atlas | 512×1024 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P1 | globalgamemanagers.assets:1591 | low_SideQuest_HUD_Atlas | 512×512 | Trilinear | 1 livelli
+Preparare mipmap per icone e miniature; confrontare nitidezza alla dimensione reale. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | sharedassets10.assets:3 | BattleMap | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets7.assets:9 | Chest_Card_0 | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1789 | DarkForest_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | sharedassets8.assets:3 | DeckManager_BG | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2050 | Floop | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2401 | YellowArrow | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:45 | low_BattleMap | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:39 | low_CNLogo | 1024×682 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:57 | low_CNLogo_square | 256×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1578 | low_Calendar | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | sharedassets2.assets:40 | low_Chest_Card | 256×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:34 | low_ChristmasChest | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:35 | low_DailyGift_Christmas | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:42 | low_DailyGift_Halloween | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1651 | low_DarkForest_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | sharedassets2.assets:60 | low_DungeonPortal | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1583 | low_Floop | 256×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:36 | low_HalloweenChest | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:32 | low_MultiPlayer | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:46 | low_NChest | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:50 | low_PChest | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2696 | low_YellowArrow | 256×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2338 | FcQuestMap | 4096×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2035 | FcQuestMap_Atlas01 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2617 | FcQuestMap_Atlas02 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2603 | FcQuestMap_Atlas03 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1644 | FcQuestMap_Atlas04 | 2048×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2776 | FcQuestMap_HiddenRoad_Ice | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2319 | FcQuestMap_HiddenRoad_Lumpy | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1650 | FcQuestMap_HiddenRoad_Wildberry | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2613 | FcQuestMap_HiddenRoad_Witch | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1442 | FcQuestMap_Road_Ice | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1421 | FcQuestMap_Road_Lumpy | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1862 | FcQuestMap_Road_Wildberry | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1957 | FcQuestMap_Road_Witch | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2088 | QuestMap_Atlas01 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2699 | QuestMap_Atlas02 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2612 | QuestMap_Atlas03 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1801 | QuestMap_Atlas04 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2096 | QuestMap_Ground | 2048×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2291 | QuestMap_Road_Candy | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1916 | QuestMap_Road_Cave | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1675 | QuestMap_Road_IceKingdom | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2466 | QuestMap_Road_Picnic | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2604 | QuestMap_Road_Sand | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2214 | QuestMap_Road_TreeHouse | 256×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2094 | low_FcQuestMap | 2048×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1574 | low_FcQuestMap_Atlas01 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2642 | low_FcQuestMap_Atlas02 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1781 | low_FcQuestMap_Atlas03 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2816 | low_FcQuestMap_Atlas04 | 1024×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1577 | low_FcQuestMap_HiddenRoad_Ice | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2503 | low_FcQuestMap_HiddenRoad_Lumpy | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2551 | low_FcQuestMap_HiddenRoad_Wildberry | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2236 | low_FcQuestMap_HiddenRoad_Witch | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2290 | low_FcQuestMap_Road_Ice | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1460 | low_FcQuestMap_Road_Lumpy | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1570 | low_FcQuestMap_Road_Wildberry | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1937 | low_FcQuestMap_Road_Witch | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2322 | low_QuestMap_Atlas01 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1772 | low_QuestMap_Atlas02 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2557 | low_QuestMap_Atlas03 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2112 | low_QuestMap_Atlas04 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1787 | low_QuestMap_Ground | 1024×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2352 | low_QuestMap_Road_Candy | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2781 | low_QuestMap_Road_Cave | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2374 | low_QuestMap_Road_IceKingdom | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1759 | low_QuestMap_Road_Picnic | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2247 | low_QuestMap_Road_Sand | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1749 | low_QuestMap_Road_TreeHouse | 128×256 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2421 | Candy_Atlas01 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1984 | Candy_Centerground | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2817 | Candy_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2254 | Cave_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1788 | Coliseum_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1512 | Coliseum_Table | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2328 | Coliseum_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2688 | Dungeon_Background_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1630 | Dungeon_Foreground_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2538 | Ice_Ground_01 | 1024×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2068 | Ice_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1831 | LandscapeAtlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1423 | Picnic_Background | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2480 | Picnic_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2558 | Sand_Table | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1818 | Sand_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2631 | Stadium_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1717 | TreeFort_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2007 | TreeFort_Christmas_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1903 | TreeFort_Christmas_Chairs | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2539 | TreeFort_Christmas_Floor | 1024×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2712 | TreeFort_Christmas_Table | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2187 | TreeFort_Christmas_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2425 | TreeFort_Floor | 1024×2048 | Trilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1454 | TreeFort_Halloween_Atlas | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2381 | TreeFort_Halloween_Chairs | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1721 | TreeFort_Halloween_Floor | 1024×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1726 | TreeFort_Halloween_Table | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1554 | Treefort_Halloween_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2311 | Treefort_Table_Objects | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2128 | low_Candy_Atlas01 | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1715 | low_Candy_Centerground | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1810 | low_Candy_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2099 | low_Cave_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1480 | low_Coliseum_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1859 | low_Coliseum_Table | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2191 | low_Coliseum_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2159 | low_Dungeon_Background_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2765 | low_Dungeon_Foreground_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1396 | low_Ice_Ground_01 | 512×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2186 | low_Ice_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1568 | low_LandscapeAtlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2390 | low_Picnic_Background | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2093 | low_Picnic_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1840 | low_Sand_Table | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2821 | low_Sand_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1998 | low_Stadium_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1782 | low_TreeFort_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2637 | low_TreeFort_Christmas_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:1453 | low_TreeFort_Christmas_Chairs | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2200 | low_TreeFort_Christmas_Floor | 512×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2323 | low_TreeFort_Christmas_Table | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1424 | low_TreeFort_Christmas_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2656 | low_TreeFort_Floor | 512×1024 | Trilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1613 | low_TreeFort_Halloween_Atlas | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2669 | low_TreeFort_Halloween_Chairs | 512×512 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:1546 | low_TreeFort_Halloween_Floor | 512×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2694 | low_TreeFort_Halloween_Table | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2369 | low_Treefort_Halloween_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | globalgamemanagers.assets:2474 | low_Treefort_Table_Objects | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | resources.assets:144 | FC_purchase_01 | 1920×1280 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | resources.assets:417 | LoadScreen_16x9 | 2272×1280 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | resources.assets:480 | Sidequest_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P2 | globalgamemanagers.assets:2482 | low_FC_purchase_01 | 1024×682 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | sharedassets2.assets:54 | low_KFFLogo | 1024×826 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P2 | resources.assets:45 | low_LoadScreen_16x9 | 2048×1154 | Bilinear | 1 livelli
+Provare mipmap durante riduzione/zoom; verificare bordi alpha, UV e texture ripetute.
+
+P3 | globalgamemanagers.assets:2641 | FX_BlackHole_01_TGA | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:2809 | FX_BlackHole_02 | 2048×2048 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1643 | FX_BloodTransfusion_Burst | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:2199 | FX_Bugs | 512×512 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:2709 | FX_Spell_BlackHole | 1024×1024 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | sharedassets7.assets:8 | Floop_Red | 512×512 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1660 | low_FX_BlackHole_01_TGA | 256×256 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:2064 | low_FX_BlackHole_02 | 256×256 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1680 | low_FX_BloodTransfusion_Burst | 256×256 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1427 | low_FX_Bugs | 64×64 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1895 | low_FX_Spell_BlackHole | 256×256 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha.
+
+P3 | globalgamemanagers.assets:1496 | FcNis01_01 | 4096×2048 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2380 | FcNis02_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1756 | FcNis03_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1794 | FcNis04_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1973 | FcNis04_02 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1670 | FcNis05_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2430 | FcNis06_01 | 4096×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2310 | FcNis08_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2633 | FcNis20_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1872 | FcNis20_01b | 4096×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2107 | FcNis20_01c | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1791 | FcNis30_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2560 | FcNis40_01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1520 | FcNis40_02 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2280 | NisVD01 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2121 | NisVD03 | 2048×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2348 | NisVD04 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1487 | NisVD05 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2173 | NisVD06 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1838 | NisVD07 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2210 | NisVD08 | 2048×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2283 | NisVD09 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2263 | NisVD10 | 4096×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2350 | NisVD11 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1681 | NisVD12 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2786 | NisVD13 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1999 | NisVD14 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1968 | NisVD15 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2058 | NisVD16 | 2048×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1956 | NisVD17 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2146 | NisVD18 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2682 | NisVD19 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2100 | NisVD20 | 4096×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2545 | NisVD21 | 4096×4096 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2554 | low_FcNis01_01 | 2048×1024 | Bilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2574 | low_FcNis02_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2597 | low_FcNis03_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2455 | low_FcNis04_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1538 | low_FcNis04_02 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1514 | low_FcNis05_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2610 | low_FcNis06_01 | 2048×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1688 | low_FcNis08_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2742 | low_FcNis20_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2332 | low_FcNis20_01b | 2048×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1470 | low_FcNis20_01c | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2605 | low_FcNis30_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2520 | low_FcNis40_01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1567 | low_FcNis40_02 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2548 | low_NisVD01 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1500 | low_NisVD03 | 1024×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2103 | low_NisVD04 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2398 | low_NisVD05 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1585 | low_NisVD06 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2126 | low_NisVD07 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2308 | low_NisVD08 | 1024×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2252 | low_NisVD09 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2181 | low_NisVD10 | 2048×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2822 | low_NisVD11 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2799 | low_NisVD12 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2629 | low_NisVD13 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1582 | low_NisVD14 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1628 | low_NisVD15 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2083 | low_NisVD16 | 1024×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1528 | low_NisVD17 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2422 | low_NisVD18 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2750 | low_NisVD19 | 1024×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:1493 | low_NisVD20 | 2048×1024 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.
+
+P3 | globalgamemanagers.assets:2048 | low_NisVD21 | 2048×2048 | Trilinear | 1 livelli
+Provare mipmap con la stessa politica su tutti i fotogrammi; verificare scintillio e contorni alpha. Atlante: prima analizzare rettangoli, gutter e UV; generare riduzioni per regioni isolate, non mescolare sprite vicini.

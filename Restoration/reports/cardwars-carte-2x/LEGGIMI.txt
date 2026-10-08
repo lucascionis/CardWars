@@ -1,0 +1,15 @@
+CARD WARS — ILLUSTRAZIONI CARTE 2×
+
+288 PNG: 194 creature, 27 edifici, 67 magie.
+286 elaborazioni distinte; 2 copie pixel-identiche riutilizzano l'inferenza.
+Modello locale: realesr-animevideov3-x2, tile 128, thread 2:1:2.
+Trasparenza originale preservata con interpolazione bilineare 2×.
+Tutte le dimensioni, maschere alpha e PNG salvati sono verificati.
+File sorgenti del gioco invariati, verificati con SHA256 e mtime.
+Nessun gioco avviato. Queste immagini non sono applicate al gioco.
+Per il reinserimento occorre verificare atlanti/sprite, mipmap e rendering.
+Durata elaborazione e verifica: 76.1 secondi.
+
+originals/: sorgenti estratte
+upscaled/: PNG finali
+manifest.json: provenienza, hash, configurazione e verifiche

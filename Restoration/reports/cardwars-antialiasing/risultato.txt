@@ -1,0 +1,17 @@
+CARD WARS — PATCH QUALITÀ INSTALLATA
+
+Mipmap aggiunte: 212 texture.
+Filtro trilineare impostato: 1907 texture.
+MSAA consentito: 53 camere; QualitySettings originale: 4 campioni.
+Atlanti differiti: 38, richiedono identificazione delle regioni attraverso UV/materiali.
+Livello base 2× e alpha preservati; tutte le riduzioni aggiunte sono verificate.
+Oggetti estranei verificati byte per byte: 107434.
+Backup completo prima della patch: ${CARDWARS_HOME}/backups/before-antialiasing-20261007-204929/game
+
+Verifica runtime: avvio normale da GameToMac, arrivo READY, schermata iniziale leggibile e senza difetti macroscopici. Nessun errore di caricamento texture rilevato. Gioco chiuso al termine.
+Le immagini game-window-after-*.png sono screenshot macOS reali della finestra Card Wars 1920×1080 logici, 3840×2160 fisici.
+L'immagine finn-sampling-preview.png è una simulazione di riduzione, non un confronto in gioco.
+Restano da verificare visivamente la mappa, le animazioni e i livelli di mip più grossolani degli atlanti. Il numero effettivo di campioni MSAA usato dal renderer non è stato misurato.
+Le mipmap esistenti non sono state rigenerate. Le nuove usano filtro area BOX con alpha premoltiplicato; le regioni note degli atlanti sono ridotte separatamente e i gutter estesi solo in spazio libero. Ai livelli estremamente piccoli, dove i rettangoli si sovrappongono, resta necessaria verifica visiva.
+
+Rollback: con gioco chiuso, spostare la cartella corrente ${CARDWARS_HOME}/game in una cartella di conservazione, quindi ripristinare ${CARDWARS_HOME}/backups/before-antialiasing-20261007-204929/game nello stesso percorso. Il backup contiene l'intero restauro 2× precedente alla patch qualità.

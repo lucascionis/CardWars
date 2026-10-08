@@ -1,0 +1,13 @@
+{
+  "sprites": 1087,
+  "ngui_atlases": 44,
+  "rendered_sprite_pairs": 8,
+  "normalized_uvs_preserved": true,
+  "world_geometry_preserved": true,
+  "physics_shapes_preserved": true,
+  "serialized_script_references_preserved": true,
+  "comparison": "${GAME_TO_MAC_WORKSPACE}/outputs/cardwars-integrazione-2x/sprite-reinseriti.png",
+  "comparison_sha256": "47c593cdb40fd27901b259bd60b19a52fd7229c150651e023a89330a5a3e7dee",
+  "status": "verified",
+  "game_launched": false
+}

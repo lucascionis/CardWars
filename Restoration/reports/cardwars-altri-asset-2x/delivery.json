@@ -1,0 +1,75 @@
+{
+  "status": "complete",
+  "total_assets": 1771,
+  "original_card_assets_preserved": 288,
+  "total_graphic_textures_delivered": 2059,
+  "excluded_runtime_fonts": 3,
+  "all_png_dimensions_and_alpha_verified": true,
+  "source_bytes_and_mtime_unchanged": true,
+  "gallery": "index.html",
+  "packages": [
+    {
+      "category": "screens",
+      "label": "Schermate e loghi",
+      "count": 16,
+      "path": "pacchetti/CardWars-screens-2x.zip",
+      "bytes": 35337881,
+      "sha256": "3f993fc0d72434c4141a1fccbb5d5eca111babc927bb770ce7cf7746ea13d2a2",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "maps",
+      "label": "Mappe e percorsi",
+      "count": 127,
+      "path": "pacchetti/CardWars-maps-2x.zip",
+      "bytes": 417213894,
+      "sha256": "e6557c1559daf3a692d472e7f57d5e380efbd7d8f0f91d3da23235a3589f85a9",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "ui",
+      "label": "Interfaccia e atlanti",
+      "count": 64,
+      "path": "pacchetti/CardWars-ui-2x.zip",
+      "bytes": 243249471,
+      "sha256": "1ad5838b20dddc6d506b8ffe788f730b03e7daad3609a36bb78b2f05ef2fdb81",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "scenery",
+      "label": "Scenari e ambienti",
+      "count": 234,
+      "path": "pacchetti/CardWars-scenery-2x.zip",
+      "bytes": 300391880,
+      "sha256": "f17bc87006366977dc81245e73a2f8b1fc97b7192e83d77b1d339e0cc309d9b5",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "characters",
+      "label": "Personaggi e oggetti",
+      "count": 778,
+      "path": "pacchetti/CardWars-characters-2x.zip",
+      "bytes": 403854202,
+      "sha256": "c00eb441fb3b7ab797ef884c04e0c0b89516c9e1a642d0a2f3ae8a82d82e7ec8",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "effects",
+      "label": "Effetti e animazioni",
+      "count": 262,
+      "path": "pacchetti/CardWars-effects-2x.zip",
+      "bytes": 39996330,
+      "sha256": "6aa3cca556da1e9d8697c8697fac7e8027f6d52bd8780dc9b1dc9ef353814a62",
+      "zip_integrity_verified": true
+    },
+    {
+      "category": "card_variants",
+      "label": "Varianti delle carte",
+      "count": 290,
+      "path": "pacchetti/CardWars-card_variants-2x.zip",
+      "bytes": 103613850,
+      "sha256": "d2b5d4f78bc482b64c517f5dbbac0306a155aa6dd3ed36aa4ab3c87fad8b09ed",
+      "zip_integrity_verified": true
+    }
+  ]
+}
