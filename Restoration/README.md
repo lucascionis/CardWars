@@ -30,6 +30,14 @@ All published restored PNGs were checked against their recorded output hashes, a
 
 Before source integration/release, review atlas gutters, UVs, coarse mip overlaps, embedded lettering, animation coherence, memory use, small icons and all gameplay screens. Native Apple Silicon support requires a compatible Unity upgrade and a separate build/test effort.
 
+## Compressed game textures: next experiment
+
+The restored PNG masters are compressed source images. The current integration deliberately stores RGB24/RGBA32 texture payloads in Unity streams to avoid further image loss. ZIP packages are distribution archives and are not directly loaded by the unchanged game.
+
+For the current Windows/Direct3D 11 build, trial BC7 payloads at 8 bits per pixel instead of RGB24/RGBA32 at 24/32 bits: roughly one third or one quarter of texture payload size, excluding block padding and other game data. BC7 retains an alpha channel but is lossy; compare gradients, small lettering, outlines and alpha edges against the masters before conversion. Keep the existing mip levels and atlas/sprite geometry. The local UnityPy/etcpak stack already exposes a BC7 encoder; no Unity Editor is required for a payload-encoding experiment.
+
+This is a proposed experiment, **not an applied compression patch or verified runtime result**. GPU support must be checked in the actual Wine/D3DMetal renderer. A future native Apple Silicon build needs its own format selection and runtime validation; older macOS/OpenGL configurations can fall back to uncompressed RGBA32. See [Unity 2017.4 texture compression documentation](https://docs.unity3d.com/2017.4/Documentation/Manual/class-TextureImporterOverride.html).
+
 ## Credits and rights
 
 Original PC port: shishkabob27/CardWars. Card Wars/Adventure Time assets remain the property of their respective rights holders. This snapshot does not grant a new license over upstream code or game artwork and does not replace their original notices.
